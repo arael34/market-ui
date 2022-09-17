@@ -1,6 +1,9 @@
 from tkinter import *
 from tkinter import ttk
 
+def view():
+    pass
+
 class Root(Tk):
     def __init__(self):
         super(Root,self).__init__()
@@ -10,7 +13,7 @@ class Root(Tk):
 
 def main():
     root = Root()
-    ttk.Button(root, text="Quit", command = root.destroy).place(x = 200, y = 200)
+    ttk.Button(root, text="View", command = view).place(x = 200, y = 200)
     root.mainloop()
 
 if __name__ == "__main__":
@@ -24,6 +27,8 @@ default screen
 options - create new folder, view quotes, view watchlists
 
 libraries - tkinter, market api, statplots, probably math
+
+how much more volatile than the market? give an basis
 
 need a database at some point
 """
