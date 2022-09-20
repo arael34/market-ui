@@ -42,10 +42,10 @@ def main():
         go.Scatter(x=data.index, y=data.sma10, name='SMA 10'),
         go.Scatter(x=data.index, y=data.sma80,name='SMA 80')])
 
-    for template in ["plotly_dark"]:
+    """ for template in ["plotly_dark"]:
         fig.layout.font.family = 'Balto'
         fig.update_layout(template=template, 
-            title="Historical Price and SME of '"+str(sym)+"' index")
+            title="Historical Price and SME of '"+str(sym)+"' index") """
 
     fig.show()
 
