@@ -30,17 +30,15 @@ def main():
     df.round(3)
 
     data = pd.DataFrame()
-    sma10 ='sma10'
-    sma80 ='sma80'
-    data[sma10]= df.iloc[:,4].rolling(window=10).mean()
-    data[sma80]= df.iloc[:,4].rolling(window=80).mean()
+    data['average10']= df.iloc[:,4].rolling(window=10).mean()
+    data['average80']= df.iloc[:,4].rolling(window=80).mean()
     data.round(2)
 
     fig = go.Figure(data=[go.Candlestick(x=df.index, name = 'Price',
                     open=df['Open'], high=df['High'], 
                     low=df['Low'], close=df['Close']),
-        go.Scatter(x=data.index, y=data.sma10, name='SMA 10'),
-        go.Scatter(x=data.index, y=data.sma80,name='SMA 80')])
+        go.Scatter(x = data.index, y = data.average10, name = '10 day moving average'),
+        go.Scatter(x = data.index, y = data.average80, name = '80 day moving average')])
 
     """ for template in ["plotly_dark"]:
         fig.layout.font.family = 'Balto'

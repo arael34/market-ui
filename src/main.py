@@ -22,6 +22,8 @@ pio.templates
 import yfinance as yf
 
 def view(text):
+    if text == '':
+        return
     sym = text
     start = dt.datetime(2022, 1, 1)
     now = dt.datetime.now()
@@ -69,6 +71,7 @@ if __name__ == "__main__":
 """
 TODO
 make resizable, learn how to use grid/pack for buttons and such
+text variable seems to always be empty quotes
 
 default screen
 options - create new folder, view quotes, view watchlists
