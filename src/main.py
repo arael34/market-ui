@@ -21,48 +21,49 @@ pio.templates
 
 import yfinance as yf
 
-def view(text):
-    if text == '':
-        return
-    sym = text
-    start = dt.datetime(2022, 1, 1)
-    now = dt.datetime.now()
-    df = pdr.get_data_yahoo(sym, start, now)
-
-    df.round(3)
-
-    data = pd.DataFrame()
-    sma10 ='sma10'
-    sma80 ='sma80'
-    data[sma10]= df.iloc[:,4].rolling(window=10).mean()
-    data[sma80]= df.iloc[:,4].rolling(window=80).mean()
-    data.round(2)
-
-    fig = go.Figure(data=[go.Candlestick(x=df.index, name = 'Price',
-                    open=df['Open'], high=df['High'], 
-                    low=df['Low'], close=df['Close']),
-        go.Scatter(x=data.index, y=data.sma10, name='SMA 10'),
-        go.Scatter(x=data.index, y=data.sma80,name='SMA 80')])
-
-    """ for template in ["plotly_dark"]:
-        fig.layout.font.family = 'Balto'
-        fig.update_layout(template=template, 
-            title="Historical Price and SME of '"+str(sym)+"' index") """
-
-    fig.show()
-
 class Root(Tk):
     def __init__(self):
         super(Root,self).__init__()
         self.title("Python Tkinter")
         self.geometry("600x600")
         self.resizable(0, 0)
+        self.stock_text = ttk.Entry(self)
+        self.stock_text.place(x = 200, y = 100)
+        ttk.Button(self, text = "View", command = self.view).place(x = 400, y = 100)
+
+    def view(self):
+        text = self.stock_text.get()
+        if text == '':
+            return
+        sym = text
+        start = dt.datetime(2022, 1, 1)
+        now = dt.datetime.now()
+        df = pdr.get_data_yahoo(sym, start, now)
+
+        df.round(3)
+
+        data = pd.DataFrame()
+        sma10 ='sma10'
+        sma80 ='sma80'
+        data[sma10]= df.iloc[:,4].rolling(window=10).mean()
+        data[sma80]= df.iloc[:,4].rolling(window=80).mean()
+        data.round(2)
+
+        fig = go.Figure(data=[go.Candlestick(x=df.index, name = 'Price',
+                        open=df['Open'], high=df['High'], 
+                        low=df['Low'], close=df['Close']),
+            go.Scatter(x=data.index, y=data.sma10, name='SMA 10'),
+            go.Scatter(x=data.index, y=data.sma80,name='SMA 80')])
+
+        """ for template in ["plotly_dark"]:
+            fig.layout.font.family = 'Balto'
+            fig.update_layout(template=template, 
+                title="Historical Price and SME of '"+str(sym)+"' index") """
+
+        fig.show()
 
 def main():
     root = Root()
-    text = ""
-    ttk.Entry(root, textvariable = text).place(x = 200, y = 100)
-    ttk.Button(root, text = "View", command = view(text)).place(x = 400, y = 100)
     root.mainloop()
 
 if __name__ == "__main__":
@@ -71,7 +72,6 @@ if __name__ == "__main__":
 """
 TODO
 make resizable, learn how to use grid/pack for buttons and such
-text variable seems to always be empty quotes
 
 default screen
 options - create new folder, view quotes, view watchlists
