@@ -1,14 +1,9 @@
 from flask import Flask, request, render_template
 
 import pandas as pd
-import numpy as np
 from pandas_datareader import data as pdr
 import datetime as dt
-from datetime import date, timedelta
-
-import matplotlib.pyplot as plt
 import plotly.graph_objects as go
-import plotly.express as px
 import plotly.io as pio
 pio.templates
 
