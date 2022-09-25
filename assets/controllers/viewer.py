@@ -1,24 +1,14 @@
-import os
-from tkinter import Y
-import requests
-import urllib.request
-
-# dunno if these are needed yet
 import pandas as pd
-import numpy as np
 from pandas_datareader import data as pdr
 import datetime as dt
-from datetime import date, timedelta
 
-import matplotlib.pyplot as plt
 import plotly.graph_objects as go
-import plotly.express as px
 import plotly.io as pio
 pio.templates
 
 import yfinance as yf
 
-def main():
+def view():
     yf.pdr_override()
 
     sym = input("Enter stock symbol: ")
@@ -47,6 +37,3 @@ def main():
 
     #fig.show()
     pio.write_html(fig, file = "index.html", auto_open = True)
-
-if __name__ == "__main__":
-    main()
