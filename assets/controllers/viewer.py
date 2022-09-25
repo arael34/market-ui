@@ -1,18 +1,20 @@
 import pandas as pd
+import json
 from pandas_datareader import data as pdr
 import datetime as dt
 
+import plotly
 import plotly.graph_objects as go
 import plotly.io as pio
 pio.templates
 
 import yfinance as yf
 
-def view():
+def view(sym):
+    if sym == "":
+        return
+
     yf.pdr_override()
-
-    sym = input("Enter stock symbol: ")
-
     start = dt.datetime(2022, 1, 1)
     now = dt.datetime.now()
     df = pdr.get_data_yahoo(sym, start, now)
@@ -35,4 +37,4 @@ def view():
         fig.update_layout(template=template, 
             title="Historical Price and SME of '"+str(sym)+"' index") """
 
-    fig.show()
+    return fig
