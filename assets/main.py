@@ -1,8 +1,10 @@
 from flask import Flask, render_template, request, redirect
 
 from controllers.viewer import view
+from dash_ex.dash_init import graph_init
 
 app = Flask(__name__)
+graph_init(app)
 
 @app.route("/")
 def _index():
