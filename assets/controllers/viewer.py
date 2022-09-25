@@ -35,5 +35,4 @@ def view():
         fig.update_layout(template=template, 
             title="Historical Price and SME of '"+str(sym)+"' index") """
 
-    #fig.show()
-    pio.write_html(fig, file = "index.html", auto_open = True)
+    fig.show()
