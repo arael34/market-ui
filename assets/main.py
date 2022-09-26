@@ -1,12 +1,12 @@
-from flask import Flask, render_template, request, redirect
+from flask import Flask, render_template, request
+import plotly
+import json
 
 from controllers.viewer import view
-from dash_ex.dash_init import graph_init
 
 app = Flask(__name__)
-graph_init(app)
 
-@app.route("/")
+@app.route("/", methods=["GET"])
 def _index():
     return render_template('index.html')
 
@@ -16,10 +16,9 @@ def _view():
         return
     text = request.form['in']
     fig = view(text)
-    fig.show()
+    fjson = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
+    return render_template("return.html", figJSON=fjson)
     
-    return render_template('return.html')
-
 def main():
     app.run()
 

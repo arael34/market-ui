@@ -7,6 +7,14 @@
     <title>Document</title>
 </head>
 <body>
-    <button type="button">Return</button>
+    <div id="fig"></div>
+    <form action="/" method="get">
+        <button type="submit" formaction="/">Return</button>
+    </form>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script type="text/javascript">
+        var fig = {{ figJSON | safe}}
+        Plotly.plot("fig", fig, {})
+    </script>
 </body>
 </html>
