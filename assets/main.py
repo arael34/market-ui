@@ -3,7 +3,7 @@ import plotly
 import json
 
 from controllers.viewer import view
-from controllers.folder import add_folder
+from controllers.folder import create_folder
 
 app = Flask(__name__)
 
@@ -24,8 +24,5 @@ def _view():
 def _add_to_folder():
     return render_template("folders.html")
 
-def main():
-    app.run()
-
 if __name__ == "__main__":
-    main()
+    app.run(debug=True)
