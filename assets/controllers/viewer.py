@@ -1,9 +1,7 @@
 import pandas as pd
-import json
 from pandas_datareader import data as pdr
 import datetime as dt
 
-import plotly
 import plotly.graph_objects as go
 import plotly.io as pio
 pio.templates

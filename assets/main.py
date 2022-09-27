@@ -3,6 +3,7 @@ import plotly
 import json
 
 from controllers.viewer import view
+from controllers.folder import add_folder
 
 app = Flask(__name__)
 
@@ -19,6 +20,10 @@ def _view():
     fjson = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
     return render_template("return.html", figJSON=fjson)
     
+@app.route("/folders", methods=["POST"])
+def _add_to_folder():
+    return render_template("folders.html")
+
 def main():
     app.run()
 
