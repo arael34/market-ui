@@ -8,7 +8,7 @@ pio.templates
 
 import yfinance as yf
 
-def view(sym):
+def view_f(sym):
     if sym == "":
         return
 
