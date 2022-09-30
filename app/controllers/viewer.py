@@ -3,8 +3,6 @@ from pandas_datareader import data as pdr
 import datetime as dt
 
 import plotly.graph_objects as go
-import plotly.io as pio
-pio.templates
 
 import yfinance as yf
 
