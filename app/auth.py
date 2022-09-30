@@ -4,6 +4,8 @@ auth = Blueprint("auth", __name__)
 
 """
 Signup page
+username must be longer than 3 characters,
+and confirm password feature
 """
 @auth.route("/signup", methods=["POST", "GET"])
 def signup():
@@ -16,7 +18,8 @@ def signup():
         elif password != password_c:
             flash("Passwords don't match. Try Again", category="error")
         else:
-            pass
+            session["user"] = username
+            return redirect(url_for("auth.user"))
             # add to db
     return render_template("signup.html")
 
@@ -27,8 +30,8 @@ If a user accesses this page again, they're redirected to their profile
 @auth.route("/login", methods=["POST", "GET"])
 def login():
     if request.method == "POST":
-        user = request.form["username"]
-        session["user"] = user
+        username = request.form["username"]
+        session["user"] = username
         return redirect(url_for("routes.user"))
     elif request.method == "GET":
         return render_template("login.html")
