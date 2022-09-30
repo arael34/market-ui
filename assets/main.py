@@ -1,4 +1,3 @@
-from re import L
 from flask import Flask, render_template, request, session, redirect, url_for
 import plotly
 import json
