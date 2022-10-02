@@ -8,7 +8,7 @@ routes = Blueprint("routes", __name__)
 
 @routes.route("/", methods=["GET"])
 def index():
-    return render_template('index.html')
+    return render_template("index.html")
 
 """
 Stock plot view. Without a symbol given, the user is redirected to home.

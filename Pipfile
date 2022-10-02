@@ -5,6 +5,7 @@ name = "pypi"
 
 [packages]
 dash = "*"
+flask-login = "*"
 
 [dev-packages]
 
