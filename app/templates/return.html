@@ -1,15 +1,15 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div id="fig"></div>
-    <form action="/" method="get">
-        <button type="submit" formaction="/">Return</button>
+<div id = "fig"></div>
+    <form action = "/" method = "get">
+        <button type = "submit" formaction = "/">Return</button>
     </form>
-    <form action="/folders" method="get">
-        <button type="submit" formaction="/folders">Add to Folder</button>
+    <form action = "/folders" method = "get">
+        <button type = "submit" formaction = "/folders">Add to Folder</button>
     </form>
-    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-    <script type="text/javascript">
+    <script src = "https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script type = "text/javascript">
         var fig = {{ figJSON | safe}}
         Plotly.plot("fig", fig, {})
 </script>

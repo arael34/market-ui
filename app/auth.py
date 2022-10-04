@@ -31,6 +31,7 @@ def signup():
             db.session.commit()
             login_user(user, remember=True)
             return redirect(url_for("auth.user"))
+
     return render_template("signup.html")
 
 """
@@ -52,6 +53,7 @@ def login():
                 flash("Username or password is incorrect, try again.", category="error")
         else:
             flash("Username or password is incorrect, try again.", category="error")
+            
     return render_template("login.html")
 
 """
@@ -68,6 +70,6 @@ def user():
         logout_user()
         return redirect(url_for("auth.login"))
     elif isinstance(user, AnonymousUserMixin) or isinstance(user, type(None)):
-        return redirect(url_for("auth.login"))
+        return redirect(url_for("auth.signup"))
     else:
         return render_template("user.html", user=user.username)
