@@ -26,7 +26,8 @@ def view():
         return redirect(url_for("routes.index"))
 
 """
-folders !
+TODO
+folders
 """
 @routes.route("/folders", methods=["POST", "GET"])
 def add_to_folder():

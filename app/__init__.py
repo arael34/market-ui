@@ -1,7 +1,9 @@
 from flask import Flask
 from flask_login import LoginManager
+from flask_migrate import Migrate
 from flask_sqlalchemy import SQLAlchemy
 
+migrate = Migrate()
 db = SQLAlchemy()
 DB_NAME = "users.db"
 
@@ -15,7 +17,8 @@ def create_app():
     app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
     db.init_app(app)
-    db.create_all(app=app)
+    migrate.init_app(app, db)
+    #db.create_all(app=app)
 
     app.register_blueprint(routes, url_prefix="/")
     app.register_blueprint(auth, url_prefix="/")
