@@ -2,21 +2,17 @@
 
 {% block content %}
 <div id="fig"></div>
-<form action = "/" method = "get">
+<form action="/" method="get">
     <button type = "submit" formaction = "/">Return</button>
 </form>
-<script src = "https://cdn.plot.ly/plotly-latest.min.js"></script>
-<script type = "text/javascript">
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+<script type="text/javascript">
     var fig = {{ figJSON | safe}}
     Plotly.plot("fig", fig, {})
 </script>
 
-<form method="POST" action="#">  
-    <select id="folders" type="text" name="folders" placeholder="Select A Folder">
-        <option disabled selected>Select a folder</option>
-        <option id="create" value="create">Create new</option>
-    </select>
-<input type="submit" value="Add to Folder">
+<form action="#", method="post">  
+    <button type="submit">Add to portfolio</button>
 </form>
 
 {% endblock %}

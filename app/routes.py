@@ -31,12 +31,12 @@ def view():
 
 """
 TODO
-folders
+portfolios
 """
-@routes.route("/folders", methods=["POST", "GET"])
-def folders():
+@routes.route("/portfolio", methods=["POST", "GET"])
+def portfolio():
     user = current_user
     if isinstance(user, AnonymousUserMixin) or isinstance(user, type(None)):
         return redirect(url_for("auth.signup"))
     #elif request.method == "GET":
-    return render_template("folders.html", folders=user.folders)
+    return render_template("portfolio.html", portfolio=user.portfolio)
