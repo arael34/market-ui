@@ -9,6 +9,7 @@ DB_NAME = "users.db"
 
 from .routes import routes
 from .auth import auth
+from .port import port
 
 def create_app():
     app = Flask(__name__)
@@ -21,6 +22,7 @@ def create_app():
 
     app.register_blueprint(routes, url_prefix="/")
     app.register_blueprint(auth, url_prefix="/")
+    app.register_blueprint(port, url_prefix="/portfolio/")
 
     lm = LoginManager()
     lm.login_view = "auth.login"

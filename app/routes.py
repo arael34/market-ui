@@ -33,10 +33,9 @@ def view():
 TODO
 portfolios
 """
-@routes.route("/portfolio", methods=["POST", "GET"])
+@routes.route("/portfolio", methods=["GET"])
 def portfolio():
     user = current_user
     if isinstance(user, AnonymousUserMixin) or isinstance(user, type(None)):
         return redirect(url_for("auth.signup"))
-    #elif request.method == "GET":
     return render_template("portfolio.html", portfolio=user.portfolio)

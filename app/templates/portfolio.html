@@ -4,7 +4,13 @@
 {% for symbol in portfolio %}
     <p1>{{ symbol }}</p1>
 {% endfor %}
-<form method="post">
+<form method="put" id="add">
     <button type="submit" formaction="#">Add</button>
+</form>
+<form method="put" id="del">
+    <button type="submit" formaction="#">Delete</button>
+</form>
+<form method="put" id="clear">
+    <button type="submit" formaction="#">Clear</button>
 </form>
 {% endblock%}
