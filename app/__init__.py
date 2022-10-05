@@ -18,7 +18,6 @@ def create_app():
 
     db.init_app(app)
     migrate.init_app(app, db)
-    #db.create_all(app=app)
 
     app.register_blueprint(routes, url_prefix="/")
     app.register_blueprint(auth, url_prefix="/")

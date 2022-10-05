@@ -1,4 +1,10 @@
 {% extends "base.html" %}
 
 {% block content %}
+{% for folder in folders %}
+    <p1>{{ folder }}</p1>
+{% endfor %}
+<form method="post">
+    <button type="submit" formaction="#">Add</button>
+</form>
 {% endblock%}
