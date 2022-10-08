@@ -1,7 +1,8 @@
 from flask import Blueprint, request, render_template, redirect, url_for, flash
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import login_user, logout_user, current_user, AnonymousUserMixin
-from .models import User
+
+from .models import User, Portfolio
 from . import db
 
 auth = Blueprint("auth", __name__)
@@ -26,7 +27,7 @@ def signup():
         elif password != password_c:
             flash("Passwords don't match, try again.", category="error")
         else:
-            user = User(username=username, password=generate_password_hash(password, method="sha256"))
+            user = User(username=username, password=generate_password_hash(password, method="sha256"), portfolio = Portfolio(symbols=""))
             db.session.add(user)
             db.session.commit()
             login_user(user, remember=True)
