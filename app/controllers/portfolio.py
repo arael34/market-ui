@@ -1,5 +1,6 @@
 from flask import flash
 from flask_login import current_user
+from .. import db
 
 def add_to_portfolio(symbol):
     if isinstance(symbol, type(None)):
@@ -7,6 +8,7 @@ def add_to_portfolio(symbol):
     else:
         user = current_user
         user.portfolio = symbol
+        db.session.commit()
 
 def del_from_portfolio(symbol):
     pass
