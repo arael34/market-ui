@@ -1,5 +1,4 @@
 from flask import Blueprint, render_template, request, redirect, url_for
-from flask_login import current_user, AnonymousUserMixin
 import plotly
 import json
 
@@ -28,14 +27,3 @@ def view():
             pass
     elif request.method == "GET":
         return redirect(url_for("routes.index"))
-
-"""
-TODO
-portfolios
-"""
-@routes.route("/portfolio", methods=["GET"])
-def portfolio():
-    user = current_user
-    if isinstance(user, AnonymousUserMixin) or isinstance(user, type(None)):
-        return redirect(url_for("auth.signup"))
-    return render_template("portfolio.html", portfolio=user.portfolio)
