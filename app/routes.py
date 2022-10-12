@@ -7,8 +7,8 @@ from .controllers.viewer import view_f
 routes = Blueprint("routes", __name__)
 
 @routes.route("/", methods=["GET"])
-def index():
-    return render_template("index.html")
+def search():
+    return render_template("search.html")
 
 """
 Stock plot view. Without a symbol given, the user is redirected to home.
@@ -26,4 +26,4 @@ def view():
         else:
             pass
     elif request.method == "GET":
-        return redirect(url_for("routes.index"))
+        return redirect(url_for("routes.search"))
